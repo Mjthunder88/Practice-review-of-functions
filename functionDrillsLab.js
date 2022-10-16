@@ -294,9 +294,18 @@ let loser = 'Glimmer'
 */
 
 //CODE HERE
-let theEliminator = (str1, str2) => {
-  
+let theEliminator = (contestants, loser) => {
+  let result = ''
+  for (let i = 0; i < contestants.length; i++) {
+    if (contestants[i] === loser)  {
+      result = contestants.splice(i, 1)
+    }
+  }
+  // console.log(result)
+  return contestants
 }
+
+// console.log(theEliminator(contestants, loser))
 
 ////////////////// PROBLEM 17 ////////////////////
 let sampleString = "Hi, my name is Kylo."
@@ -306,7 +315,11 @@ let sampleString = "Hi, my name is Kylo."
 */
 
 //CODE HERE
+let upperCase = (str) => {
+  console.log(str.toUpperCase())
+}
 
+upperCase(sampleString)
 
 ////////////////// PROBLEM 18 ////////////////////
 /*
@@ -319,6 +332,20 @@ let sampleString = "Hi, my name is Kylo."
   return 'must provide a valid email address'
 */
 
+function emailCheck (email) {
+  String(email)
+  let newEmail = email.trim()
+  // console.log(newEmail)
+  if (newEmail.includes('@')) {
+    return 'email verified'
+  } else {
+    return 'must provide a valid email address'
+  }
+}
+
+
+emailCheck(' marcusgmail.com ')
+
 ////////////////// PROBLEM 19 ////////////////////
 /*
   Write a function, naming it whatever you believe to be appropriate, that buys as many chocolate frogs as possible with a certain amount of gold. Each chocolate frog costs 3 gold. Your function should take in a single parameter, which is the amount of gold you are willing to spend. Your function should return a total amount of chocolate frogs you were able to purchase.
@@ -326,7 +353,17 @@ let sampleString = "Hi, my name is Kylo."
 */
 
 //CODE HERE
+let buy = (gold) => {
+  let total = 0
+  while (gold > 0) {
+     gold = gold - 3
+     total++
+  }
+  return total
+}
 
+let totalFrogs = buy(12)
+// console.log(totalFrogs)
 
 ////////////////// PROBLEM 20 ////////////////////
 /*
@@ -334,6 +371,21 @@ let sampleString = "Hi, my name is Kylo."
 */
 
 //CODE HERE
+let buy2 = (gold) => {
+  if (gold % 3 === 0) {
+    return gold / 3
+  } else if ((gold - 1) % 3 === 0) {
+    return (gold - 1) / 3
+  } else {
+    return (gold - 2) / 3
+  }
+}
+
+// had to look at solution to see how it was done. You have to check with an if statement to see if the current number is divisable by 3. 
+// If its not then it ends the function. Thats why it subtracts gold by 1 or 2 and then divides it by 3. 
+
+let totalFrogs2 = buy2(4)
+// console.log(totalFrogs2)
 
 
 ////////////////// PROBLEM 21 ////////////////////
@@ -343,6 +395,21 @@ let sampleArray = [0,1,2,3,4,7,5,6,8,9]
 */
 
 //CODE HERE
+function ascending (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let k = i + 1; k < arr.length; k++) {
+      if (arr[i] < arr[k]) {
+        continue
+      } else {
+        return false
+      }
+    }
+  }
+  return true
+}
+
+let arrayIsAscending = ascending(sampleArray)
+// console.log(arrayIsAscending)
 
 
 ////////////////// PROBLEM 22 ////////////////////
@@ -367,13 +434,13 @@ function pond() {
 */
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = []
+let globalScope = ['duck']
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
-let bathroomScope = []
+let bathroomScope = ['duck', 'rubberduck',]
 
 //This array should contain the variable names (as strings) accessible in the bathtub function.
-let bathtubScope = []
+let bathtubScope = ['duck', 'sailorDuck', 'rubberDuck']
 
 //This array should contain the variable names (as strings) accessible in the pond function.
-let pondScope = []
+let pondScope = ['realDuck', 'duck']
